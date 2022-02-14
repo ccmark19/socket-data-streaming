@@ -27,8 +27,7 @@ io.on('connection', function (socket){
     io.emit('userCount', {userCount: userCount});
     
     
-    // start
-        const url = 'http://192.168.75.204:8001/api/metrics/get_login_info';
+    // start        
         let res = axios.post(url).then((res)=>{console.log('res->',res);
         });
     // end
