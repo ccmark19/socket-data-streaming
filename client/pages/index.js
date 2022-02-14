@@ -20,7 +20,7 @@ export default function Home() {
       <div style={{height: "100vh", display: "flex", justifyContent:"center", alignItems: "center"}}>
         <div>client content=</div>
           <div id="getcount">
-            <script src="/socket.io/socket.io.js"></script>   
+            <script src="/socket.io/socket.io.js"></script>
             <div>
               {/* {socketState ? socketState : "nothing found"}   */}
             </div>         
