@@ -9,7 +9,7 @@ const SocketHandler = (req, res) => {
       setInterval(function () {            
           db(sql).then((msg)=>{
               socket.emit('update-input', msg)
-          });                
+          });
       }, 2000);
     })
   }
