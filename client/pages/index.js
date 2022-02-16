@@ -4,8 +4,8 @@ let socket
 
 export default function Home() {
     
-    const [input, setInput] = useState([0])
-    const [inputPointer, setInputPointer] = useState([0])
+    const [input, setInput] = useState([])
+
     useEffect(() => socketInitializer(), [])
 
     const socketInitializer = async () => {
@@ -13,13 +13,9 @@ export default function Home() {
         socket = io()
 
         socket.on('update-input', (msg) => {
-          console.log(inputPointer,msg[0]);
-                  
-              if (inputPointer != msg[0]){
-                setInputPointer(inputPointer=>msg[0]);
-                setInput((prevState)=>
-                  [...prevState,msg[0]]
-              )}
+          const temp = input;
+          temp[msg[0].session] = msg[0];
+          setInput(temp);
           })
       }
   return (
