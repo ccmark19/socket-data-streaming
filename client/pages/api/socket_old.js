@@ -5,12 +5,8 @@ const SocketHandler = (req, res) => {
 
   const getSQLResult = (io) =>{
     io.on('connection', function (socket){        
-      let sql = "SELECT * FROM login_metrics lm WHERE lm.date IN (SELECT max(date) FROM login_metrics)";
-      setInterval(function () {            
-          db(sql).then((msg)=>{
-              socket.emit('update-input', msg)
-          });
-      }, 2000);
+              socket.emit('update-input', "msg")
+      // }, 2000);
     })
   }
 

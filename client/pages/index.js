@@ -13,17 +13,27 @@ export default function Home() {
         socket = io()
 
         socket.on('update-input', (msg) => {
-          const temp = input;
-          temp[msg[0].session] = msg[0];
+          
+          const temp = msg;
+          // const temp = input;
+          console.log('front console ->',temp);
+          // temp[msg[0].session] = msg[0];
           setInput(temp);
           })
       }
   return (
-      <div style={{height: "100vh", display: "flex", justifyContent:"center", alignItems: "center"}}>
+      <div style={{height: "100vh", display: "flex", justifyContent:"center", alignItems: "center", flexDirection: "column"}}>
         <div>client content</div>
-        {
-          console.log('input->',input)
-        }
+        <div>
+          {
+            input ? Object.keys(input).map((key,index)=>{
+              return <p key={key}>
+                      <span>{key}:</span>
+                      <span>{input[key]}</span>
+                    </p>
+            }) : "no record yet, please send one"
+          }
+        </div>
         </div>
   )
 }
